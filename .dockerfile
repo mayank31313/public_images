@@ -7,4 +7,4 @@ RUN apt-get update \
 
 WORKDIR /home/base
 COPY pyproject.toml uv.lock /home/base/
-RUN uv sync
+RUN uv sync --no-install-project
