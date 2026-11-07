@@ -1,0 +1,8 @@
+services:
+  transformers_base:
+    build:
+      context: .
+      dockerfile: .dockerfile
+      platforms:
+        - linux/amd64
+    image: ghcr.io/mayank31313/transformers_base:cuda
