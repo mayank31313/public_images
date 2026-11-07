@@ -5,5 +5,6 @@ RUN apt-get update \
     && apt-get install --no-install-recommends -y ffmpeg curl build-essential git \
     && rm -rf /var/lib/apt/lists/*
 
+WORKDIR /home/base
 COPY pyproject.toml uv.lock /home/base/
 RUN uv sync
