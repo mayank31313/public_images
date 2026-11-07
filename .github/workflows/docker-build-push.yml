@@ -42,7 +42,7 @@ jobs:
           targets: transformers_base
           push: ${{ github.event_name != 'pull_request' }}
           set: |
-            transformers_base.tags=ghcr.io/${{ github.repository }}/transformers_base:latest
-            transformers_base.tags+=ghcr.io/${{ github.repository }}/transformers_base:${{ github.sha }}
+            transformers_base.tags=ghcr.io/mayank31313/transformers_base:latest
+            transformers_base.tags+=ghcr.io/mayank31313/transformers_base:${{ github.sha }}
             transformers_base.cache-from=type=gha
             transformers_base.cache-to=type=gha,mode=max
