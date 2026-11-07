@@ -5,4 +5,4 @@ services:
       dockerfile: .dockerfile
       platforms:
         - linux/amd64
-    image: ghcr.io/mayank31313/transformers_base:cuda
+    image: ghcr.io/mayank31313/transformers_base
