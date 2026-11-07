@@ -7,7 +7,10 @@ authors = [
     { name = "mayank", email = "mayank31313@gmail.com" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "torch>=2.14.1",
+    "torchvision>=0.29.1",
+]
 
 [project.scripts]
 public-images = "public_images:main"
@@ -15,3 +18,16 @@ public-images = "public_images:main"
 [build-system]
 requires = ["uv_build>=0.12.3,<0.13.0"]
 build-backend = "uv_build"
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cu130", marker = "sys_platform == 'linux'" },
+]
+torchvision = [
+  { index = "pytorch-cu130", marker = "sys_platform == 'linux'" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true
