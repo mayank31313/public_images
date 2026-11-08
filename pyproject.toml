@@ -7,6 +7,10 @@ authors = [
     { name = "mayank", email = "mayank31313@gmail.com" }
 ]
 requires-python = ">=3.12"
+dependencies = [
+    "diffusers>=0.42.1",
+    "langchain>=1.4.9",
+]
 
 [project.scripts]
 public-images = "public_images:main"
