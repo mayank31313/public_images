@@ -1,0 +1,44 @@
+name: Build Images
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  define-matrix:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      images: ${{ steps.images.outputs.matrix }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Read image configuration
+        id: images
+        run: echo "matrix=$(jq -c '.images' .github/image-builds.json)" >> "$GITHUB_OUTPUT"
+
+  build:
+    needs: define-matrix
+    name: Build ${{ matrix.image.target }}
+    strategy:
+      fail-fast: false
+      matrix:
+        image: ${{ fromJSON(needs.define-matrix.outputs.images) }}
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    uses: ./.github/workflows/docker-build-push.yml
+    with:
+      target: ${{ matrix.image.target }}
+    secrets:
+      github_token: ${{ secrets.GITHUB_TOKEN }}

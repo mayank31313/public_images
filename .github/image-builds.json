@@ -1,0 +1,10 @@
+{
+  "images": [
+    {
+      "target": "transformers_base"
+    },
+    {
+      "target": "localai_base"
+    }
+  ]
+}

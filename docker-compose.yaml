@@ -6,3 +6,12 @@ services:
       platforms:
         - linux/amd64
     image: ghcr.io/mayank31313/transformers_base
+
+  localai_base:
+    build:
+      context: .
+      dockerfile: localai-base.dockerfile
+      platforms:
+        - linux/amd64
+    image: ghcr.io/mayank31313/localai_base
+      
