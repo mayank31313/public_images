@@ -41,4 +41,4 @@ jobs:
     with:
       target: ${{ matrix.image.target }}
     secrets:
-      github_token: ${{ secrets.GITHUB_TOKEN }}
+      registry_token: ${{ secrets.GITHUB_TOKEN }}
