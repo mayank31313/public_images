@@ -39,10 +39,15 @@ jobs:
         with:
           source: .
           files: docker-compose.yaml
-          targets: transformers_base
+          targets: transformers_base,localai_base
           push: ${{ github.event_name != 'pull_request' }}
           set: |
             transformers_base.tags=ghcr.io/mayank31313/transformers_base:latest
             transformers_base.tags+=ghcr.io/mayank31313/transformers_base:${{ github.sha }}
             transformers_base.cache-from=type=gha
             transformers_base.cache-to=type=gha,mode=max
+
+            localai_base.tags=ghcr.io/mayank31313/localai_base:latest
+            localai_base.tags+=ghcr.io/mayank31313/localai_base:${{ github.sha }}
+            localai_base.cache-from=type=gha
+            localai_base.cache-to=type=gha,mode=max
